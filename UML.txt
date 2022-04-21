@@ -1,0 +1,69 @@
+class "Usuario" as Usuario{
+    User: string
+    passaword: string
+
+    +verifyLogin(): boolean
+    +Exit(): boolean
+
+}
+
+class "Empresa" as Empresa{
+    nombre: string
+    direccion:string
+    ubicacion: map
+
+}
+
+class "Empleado" as Empleado{
+    Nombre: string
+    cedula: int
+    cargosPosibles: string
+    telefono: int 
+    puntos: int 
+
+    +verHorario()
+    +actualizarContraseña()
+    
+}
+
+class "turno" as turno{
+    turnoAsignado: int 
+    cargoAsigando: string
+
+}
+
+class "posicion" as posicion{
+    coordenadasEmpleado
+
+    +compararCoordenadas(ubicEmpresa)
+}
+
+class "Puntaje" as puntaje{
+    puntual: boolean
+
+    +modificarPuntos(puntual, empleado)
+}
+
+class "Admin" as Admin{
+    Nombre: string
+    cedula: string
+
+    +regEmpleado(name, cel, cedula, cargos)
+    +DeleteEmpleado(cel)
+    +asigHorario(Empleado)
+    +editEmpleado()
+
+}
+
+class "Horario" as Horario{
+    dias:string
+    horas:string
+}
+
+Empleado --> Usuario
+Admin --> Usuario
+turno "1" --* "1" Empleado : Tiene un 
+Empleado -- posicion
+Empresa -- Usuario
+posicion -- puntaje
+turno "0" --o "1"Horario    
