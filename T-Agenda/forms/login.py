@@ -1,22 +1,50 @@
+from math import perm
 import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 from forms.ventana import Inicio
 import utilerias.util as utl
 import utilerias.clases as cl
+from utilerias import lista as cll
 
-admin= cl.Admin()
-admin.User= "Admin"
-admin.Password = "contra123"
+
+
+emp = cll.CLL()
+adm =cll.CLL()
+
+def leerArchivo():
+    archivo = open("empleados.txt", "r")
+    
+    for line in archivo:
+        #reg= archivo.readline()
+        
+        vect = line.split(";")
+        turnoac = cl.turnos(vect[5], vect[6], vect[7])
+        objeto = cl.Empleado(vect[0], int(vect[1]), vect[2], vect[3], vect[4], turnoac)
+        if vect[8]=='1':
+            objeto.permiso=1
+        
+        emp.insert(objeto)
+
+    archivo.close()
+    
+
+
+leerArchivo()
+
 class PanelPrincipal:
     
     def verificar(self):
         
         usu = self.usuario.get()
-        password = self.password.get()        
-        if(usu == admin.User and password == admin.Password) :
+        password = self.password.get()
+        print(emp.buscar(usu, password))     
+        if(emp.buscar(usu, password) != None) :
             self.ventana.destroy()
             Inicio()
+            if emp.buscar(usu, password).permiso==0:
+                Inicio.empleado.config(state='disabled')
+                Inicio.agendar.config(state='disabled')
         else:
             messagebox.showerror(message="Credenciales incorrectas",title="Mensaje")     
                                       
@@ -26,7 +54,8 @@ class PanelPrincipal:
         w, h = self.ventana.winfo_screenwidth(), self.ventana.winfo_screenheight()   
         self.ventana.geometry('800x500')
         self.ventana.config(bg='#fcfcfc')
-        self.ventana.resizable(width=0, height=0)          
+        self.ventana.resizable(width=0, height=0)    
+            
         utl.centrar_ventana(self.ventana, 800, 500)
         #Aca logo de la app
         logo =utl.leer_img("./imagenes/logo.png", (300, 300))
@@ -64,3 +93,5 @@ class PanelPrincipal:
         inicio.bind("<Return>", (lambda event: self.verificar()))
 
         self.ventana.mainloop()
+
+        
