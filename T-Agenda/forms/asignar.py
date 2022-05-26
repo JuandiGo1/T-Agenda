@@ -10,7 +10,11 @@ class asigTurn():
 
     def v_menu(self):
         self.ventana.destroy()
-        v.Inicio()
+        if lg.emp.buscar(lg.act[0], lg.act[1]).permiso==0:
+            v.Inicio(0,lg.emp.buscar(lg.act[0], lg.act[1])) 
+        elif lg.emp.buscar(lg.act[0], lg.act[1]).permiso==1:
+            v.Inicio(1, lg.emp.buscar(lg.act[0], lg.act[1]))
+        
     def mostrarInfo(self):
         
         self.Tx.config(state='normal')
@@ -41,8 +45,8 @@ class asigTurn():
                 aux=[]
                 reg = renglon.split(';')
                 tur =reg[5]+";"+reg[6]+";"+reg[7]
-                tunew=self.dia.get()+";"+self.inicio.get()+";"+self.fin.get()+"\n"
-                print (tur)
+                tunew=self.dia.get()+";"+self.inicio.get()+";"+self.fin.get()
+                
                 if int(reg[1])==cedu:
                     aux.append(renglon.replace(tur,tunew,1))
                 else:

@@ -2,7 +2,7 @@ from math import perm
 import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
-from forms.ventana import Inicio
+from forms.ventana import *
 import utilerias.util as utl
 import utilerias.clases as cl
 from utilerias import lista as cll
@@ -11,6 +11,7 @@ from utilerias import lista as cll
 
 emp = cll.CLL()
 adm =cll.CLL()
+act = []
 
 def leerArchivo():
     archivo = open("empleados.txt", "r")
@@ -21,8 +22,9 @@ def leerArchivo():
         vect = line.split(";")
         turnoac = cl.turnos(vect[5], vect[6], vect[7])
         objeto = cl.Empleado(vect[0], int(vect[1]), vect[2], vect[3], vect[4], turnoac)
-        if vect[8]=='1':
+        if int(vect[8])==1:
             objeto.permiso=1
+        print(objeto.permiso)
         
         emp.insert(objeto)
 
@@ -38,15 +40,21 @@ class PanelPrincipal:
         
         usu = self.usuario.get()
         password = self.password.get()
-        print(emp.buscar(usu, password))     
+        act.append(usu)
+        act.append(password)
+          
         if(emp.buscar(usu, password) != None) :
             self.ventana.destroy()
-            Inicio()
+            
             if emp.buscar(usu, password).permiso==0:
-                Inicio.empleado.config(state='disabled')
-                Inicio.agendar.config(state='disabled')
+                Inicio(0,emp.buscar(usu, password)) 
+            elif emp.buscar(usu, password).permiso==1:
+                Inicio(1, emp.buscar(usu, password))
+      
         else:
             messagebox.showerror(message="Credenciales incorrectas",title="Mensaje")     
+    
+
                                       
     def __init__(self):        
         self.ventana = tk.Tk()                             
@@ -55,7 +63,7 @@ class PanelPrincipal:
         self.ventana.geometry('800x500')
         self.ventana.config(bg='#fcfcfc')
         self.ventana.resizable(width=0, height=0)    
-            
+        
         utl.centrar_ventana(self.ventana, 800, 500)
         #Aca logo de la app
         logo =utl.leer_img("./imagenes/logo.png", (300, 300))
@@ -94,4 +102,3 @@ class PanelPrincipal:
 
         self.ventana.mainloop()
 
-        

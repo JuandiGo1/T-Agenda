@@ -1,11 +1,14 @@
 
 
 import tkinter as tk
+from tkinter import ttk
 from tkinter.font import BOLD, ITALIC
 from tkinter.tix import COLUMN
+from utilerias.clases import Empleado
 import utilerias.util as utl
 import forms.horario as hor
 import forms.ventana as v
+import forms.login as log
 
 class Empleados:
     def destruir(self):
@@ -14,11 +17,31 @@ class Empleados:
 
     def v_menu(self):
         self.ventana.destroy()
-        v.Inicio()
+        if log.emp.buscar(log.act[0], log.act[1]).permiso==0:
+            v.Inicio(0,log.emp.buscar(log.act[0], log.act[1])) 
+        elif log.emp.buscar(log.act[0], log.act[1]).permiso==1:
+            v.Inicio(1, log.emp.buscar(log.act[0], log.act[1]))
+        
 
     def v_horario(self):
         self.ventana.destroy()
         hor.ventanaHorario()
+
+    def regist(self):
+        self.Tx.config(state='normal')
+        file = open('empleados.txt', 'a')
+        new = self.name_tx.get()+";"+self.cedula_tx.get()+";"+self.cargo_tx.get()+";"+self.cel_tx.get()+";"+self.pass_tx.get()+";dia;inicio;fin;0"
+        file.write(new+"\n")
+        ob= Empleado(self.name_tx.get(), int(self.cedula_tx.get()), self.cargo_tx.get(), self.cel_tx.get(), self.pass_tx.get())
+        log.emp.insert(ob)
+        self.Tx.insert(tk.END, "EMPLEADO REGISTRADO \n")
+        self.Tx.config(state='disabled')
+        self.name_tx.delete(0,tk.END)
+        self.cedula_tx.delete(0,tk.END)
+        self.cargo_tx.delete(0,tk.END)
+        self.cel_tx.delete(0,tk.END)
+        self.pass_tx.delete(0,tk.END)
+        file.close
     
 
 
@@ -41,37 +64,46 @@ class Empleados:
         #Nombre
         name_lbl=tk.Label(frame_inf, text="Nombre", font=('Arial', 15, BOLD ),  bg='#1a6958', fg='#fcfcfc')
         name_lbl.place(x=50, y=50)
-        name_tx= tk.Entry(frame_inf,width=20)
-        name_tx.place(x=50, y= 90)
+        self.name_tx= tk.Entry(frame_inf,width=20)
+        self.name_tx.place(x=50, y= 90)
 
         #cedula
         cedula_lbl=tk.Label(frame_inf, text="Cedula", font=('Arial', 15, BOLD ),  bg='#1a6958', fg='#fcfcfc')
         cedula_lbl.place(x=50, y=120)
-        cedula_tx= tk.Entry(frame_inf,width=20)
-        cedula_tx.place(x=50, y= 150)
+        self.cedula_tx= tk.Entry(frame_inf,width=20)
+        self.cedula_tx.place(x=50, y= 150)
 
         #cel
         cel_lbl=tk.Label(frame_inf, text="Celular", font=('Arial', 15, BOLD ),  bg='#1a6958', fg='#fcfcfc')
         cel_lbl.place(x=50, y=180)
-        cel_tx= tk.Entry(frame_inf,width=20)
-        cel_tx.place(x=50, y= 210)
+        self.cel_tx= tk.Entry(frame_inf,width=20)
+        self.cel_tx.place(x=50, y= 210)
 
         #contra
         pass_lbl=tk.Label(frame_inf, text="Contraseña", font=('Arial', 15, BOLD ),  bg='#1a6958', fg='#fcfcfc')
         pass_lbl.place(x=50, y=240)
-        pass_tx= tk.Entry(frame_inf,width=20)
-        pass_tx.config(show="*")
-        pass_tx.place(x=50, y= 270)
+        self.pass_tx= tk.Entry(frame_inf,width=20)
+        self.pass_tx.config(show="*")
+        self.pass_tx.place(x=50, y= 270)
 
-        regis = tk.Button(frame_inf, text= "Registrar", font=('Arial', 15, BOLD ), bg="#09872f", fg='#fcfcfc')
-        regis.place(x=50, y= 300)
+        #cargo
+        cargo_lbl=tk.Label(frame_inf, text="Cargo", font=('Arial', 15, BOLD ),  bg='#1a6958', fg='#fcfcfc')
+        cargo_lbl.place(x=50, y=300)
+        self.cargo_tx= tk.Entry(frame_inf,width=20)
+        self.cargo_tx.place(x=50, y= 330)
 
-        IR = tk.Button(frame_inf, text= "Ir", font=('Arial', 15, BOLD ), bg="#09872f", fg='#fcfcfc', command=self.v_horario)
-        IR.place(x=250, y= 300)
+        regis = tk.Button(frame_inf, text= "Registrar", font=('Arial', 15, BOLD ), bg="#09872f", fg='#fcfcfc', width = 13, command=self.regist)
+        regis.place(x=250, y= 280)
+
+
 
         volver= tk.Button(frame_inf, text= "VOLVER",font=('Arial', 12, BOLD ), bg="#09872f", fg='#fcfcfc', width=15, command=self.v_menu)
         volver.place(x=630, y= 360)
-        
-        
-        
+
+        self.Tx = tk.Text(frame_inf, height = 10, width = 20, state='disabled')
+        self.Tx.place(x=250, y=90)
+        inf_lbl = tk.Label(frame_inf, text="Información", font=('Arial', 15, BOLD ),  bg='#1a6958', fg='#fcfcfc')
+        inf_lbl.place(x=250, y= 50)
+
+
         self.ventana.mainloop()

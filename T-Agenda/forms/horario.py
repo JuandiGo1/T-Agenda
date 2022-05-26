@@ -7,7 +7,11 @@ import forms.login as lg
 class ventanaHorario:
     def v_menu(self):
         self.ventana.destroy()
-        v.Inicio()
+        if lg.emp.buscar(lg.act[0], lg.act[1]).permiso==0:
+            v.Inicio(0,lg.emp.buscar(lg.act[0], lg.act[1])) 
+        elif lg.emp.buscar(lg.act[0], lg.act[1]).permiso==1:
+            v.Inicio(1, lg.emp.buscar(lg.act[0], lg.act[1]))
+        
 
     def VerLunes(self):
         file= open('empleados.txt','r')
@@ -174,10 +178,10 @@ class ventanaHorario:
         domingo.place(x=20, y=500, relwidth= 0.14, relheight= 0.1)
 
         self.Tx = tk.Text(self.ventana, height = 37, width = 70,font=('Arial', 12, BOLD ), state='disabled')
-        self.Tx.place(x=230, y=20)
+        self.Tx.place(x=240, y=20)
         self.inf = tk.Label(self.ventana, font=('Arial', 20, BOLD, ITALIC ), text= "Seleccione el dia para mostrar los \n turnos asignados", bg='#baf7f1')
         self.inf.place(x=880,y=20)
-        volver= tk.Button(self.ventana, text= "VOLVER",font=('Arial', 12, BOLD ), bg="#09872f", fg='#fcfcfc', width=15, command=self.v_menu)
+        volver= tk.Button(self.ventana, text= "VOLVER",font=('Arial', 20, BOLD, ITALIC), bg="#09872f", fg='#fcfcfc', width=15, command=self.v_menu)
         volver.place(x=20, y= 650,relwidth= 0.14, relheight= 0.1)
         #volver.grid(row=5, column=5)
 

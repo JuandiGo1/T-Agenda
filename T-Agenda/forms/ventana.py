@@ -1,12 +1,15 @@
 import tkinter as tk
 from tkinter.font import BOLD, ITALIC
+from typing import Optional
 import utilerias.util as utl
 from forms.empleado import Empleados
 from forms.horario import ventanaHorario
 from forms.asignar import asigTurn
 import utilerias.clases as cl
 import utilerias.lista as cll
-import forms.login as lg
+from forms.login import *
+from utilerias.clases import Empleado
+
 
 
 
@@ -21,11 +24,11 @@ class Inicio:
         self.ventana.destroy()
         asigTurn()
                                       
-    def __init__(self):        
+    def __init__(self, permis=None, user:Empleado=None):        
         self.ventana = tk.Tk()                             
         self.ventana.title('Menu')
-          
-        #Para obtener el tamaño máximo (maximizar ventana)                                    
+        self.permis = permis   
+        self.user = user                     
         self.ventana.geometry('800x500')
         self.ventana.config(bg='#E3FCBF')
         self.ventana.resizable(width=0, height=0)     
@@ -33,7 +36,7 @@ class Inicio:
  
 
         logo =utl.leer_img("./imagenes/logo.png", (300, 300))
-        frame_resto = tk.Frame(self.ventana, bd=0, relief=tk.SOLID, bg='#fcfcfc')
+        frame_resto = tk.Frame(self.ventana, bd=0, relief=tk.SOLID, bg='#E8F9FD')
         frame_resto.pack(expand=tk.YES,fill=tk.BOTH)      
         #medio = tk.Label( frame_resto,bg='#fcfcfc' )
         #medio.place(x=50,y=0,relwidth=1, relheight=1)
@@ -45,13 +48,20 @@ class Inicio:
         #frame_lateral.grid(row=0, column=0)
         
         self.empleado = tk.Button(self.ventana, bg = '#3a7ff6', fg="#fff",font=('Arial', 20, BOLD, ITALIC), text="Empleados",command= self.v_empleados)
-
         self.empleado.place(relx=0.35, rely=0.35 , relwidth= 0.3, relheight= 0.1 )
         self.agendar = tk.Button(self.ventana, bg = '#3a7ff6', fg="#fff",font=('Arial', 20, BOLD, ITALIC), text="Agendar",command= self.v_asig)
         self.agendar.place(relx=0.35, rely=0.55 , relwidth= 0.3, relheight= 0.1 )
         horario = tk.Button(self.ventana, bg = '#3a7ff6', fg="#fff",font=('Arial', 20, BOLD, ITALIC), text="Horario",command= self.v_horario)
+        if self.permis==0:
+            self.empleado.config(state='disabled')
+            self.agendar.config(state='disabled')
+        else:
+            self.empleado.config(state='normal')
+            self.agendar.config(state='normal')
         horario.place(relx=0.35, rely=0.75 , relwidth= 0.3, relheight= 0.1 )
-
+        if user!=None:
+            usuario_lbl= tk.Label(self.ventana, bg = '#E8F9FD', fg="#3a7ff6",font=('Arial', 17, BOLD, ITALIC), text=f"Bienvenido {self.user.name}.")
+            usuario_lbl.place(x=5, y=110, relwidth= 0.3, relheight= 0.1)
       
         
 
