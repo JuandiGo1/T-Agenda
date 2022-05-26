@@ -1,0 +1,7 @@
+Ali;11122333;Cocinero;3157529426;04;Lunes;10 am;12 pm;0
+Emily;10145399;Cocinero;3157529426;zmJe9ZaFh;Lunes;10 am;12 pm;0
+Jaymeh;84362522;Mesero;3186508860;utpsCvDBq;Martes;11 am;14 pm;0
+Juan;62943717;Domiciliario;3198244606;si;Lunes;7 am;12 pm;1
+Andres;47562890;Caja;3177118385;fPPucNXpw;Miercoles;11 am;14 pm;0
+Dayana;18468742;Cocinero;3153317515;QyTZ6v8r6;Sabado;11 am;14 pm;0
+Gab;12123742;Mesero;3153317515;QyTZ6v8r6;dia;inicio;fin;0
