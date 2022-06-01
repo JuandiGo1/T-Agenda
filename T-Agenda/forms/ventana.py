@@ -28,6 +28,7 @@ class Inicio:
         asigTurn()
     def logOut(self):
         self.ventana.destroy()
+        log.act.clear()
         log.PanelPrincipal()
     def inf(self):
         self.ventana.destroy()
