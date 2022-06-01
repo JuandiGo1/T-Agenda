@@ -16,7 +16,7 @@ class asigTurn():
             v.Inicio(1, lg.emp.buscar(lg.act[0], lg.act[1]))
         
     def mostrarInfo(self):
-        
+         
         self.Tx.config(state='normal')
         self.Tx.delete("1.0","end")
         print(self.cedula_tx.get())
@@ -26,10 +26,7 @@ class asigTurn():
             self.Tx.insert(tk.END, "Nombre: "+lg.emp.buscarporCedula(cedu).name +"\n")
             self.Tx.insert(tk.END, "Cedula: "+str(lg.emp.buscarporCedula(cedu).cedula)+"\n")
             self.Tx.insert(tk.END, "Celular: "+lg.emp.buscarporCedula(cedu).telefono+"\n")
-            self.Tx.insert(tk.END, "Turno: \n")
-            self.Tx.insert(tk.END, "-Dia: "+lg.emp.buscarporCedula(cedu).turno.dia +"\n")
-            self.Tx.insert(tk.END, "-Inicio: "+lg.emp.buscarporCedula(cedu).turno.inicio +"\n")
-            self.Tx.insert(tk.END, "-Fin: "+lg.emp.buscarporCedula(cedu).turno.fin +"\n")
+            self.Tx.insert(tk.END, "Cargo: "+lg.emp.buscarporCedula(cedu).cargos)
             self.asig['state']= "normal"
         else:
             self.Tx.insert(tk.END, "No encontrado \n")
@@ -41,25 +38,62 @@ class asigTurn():
         if (lg.emp.buscarporCedula(cedu) != -1):
             
             cadena=""
-            for renglon in open('empleados.txt'):
+            
+            for renglon in open('file.txt'):
+                tur=""
                 aux=[]
+
                 reg = renglon.split(';')
-                tur =reg[5]+";"+reg[6]+";"+reg[7]
+                
+                if int(self.nroturno.get())==1:
+                    tur =reg[1]+";"+reg[2]+";"+reg[3]
+                    lg.emp.buscarporCedula(cedu).turno[0].dia = self.dia.get()
+                    lg.emp.buscarporCedula(cedu).turno[0].inicio = self.inicio.get()
+                    lg.emp.buscarporCedula(cedu).turno[0].fin = self.fin.get()
+                elif int(self.nroturno.get())==2:
+                    tur =reg[4]+";"+reg[5]+";"+reg[6]
+                    lg.emp.buscarporCedula(cedu).turno[1].dia = self.dia.get()
+                    lg.emp.buscarporCedula(cedu).turno[1].inicio = self.inicio.get()
+                    lg.emp.buscarporCedula(cedu).turno[1].fin = self.fin.get()
+                elif int(self.nroturno.get())==3:
+                    tur =reg[7]+";"+reg[8]+";"+reg[9]
+                    lg.emp.buscarporCedula(cedu).turno[2].dia = self.dia.get()
+                    lg.emp.buscarporCedula(cedu).turno[2].inicio = self.inicio.get()
+                    lg.emp.buscarporCedula(cedu).turno[2].fin = self.fin.get()
+                elif int(self.nroturno.get())==4:
+                    tur =reg[10]+";"+reg[11]+";"+reg[12]
+                    lg.emp.buscarporCedula(cedu).turno[3].dia = self.dia.get()
+                    lg.emp.buscarporCedula(cedu).turno[3].inicio = self.inicio.get()
+                    lg.emp.buscarporCedula(cedu).turno[3].fin = self.fin.get()
+                elif int(self.nroturno.get())==5:
+                    tur =reg[13]+";"+reg[14]+";"+reg[15]
+                    lg.emp.buscarporCedula(cedu).turno[4].dia = self.dia.get()
+                    lg.emp.buscarporCedula(cedu).turno[4].inicio = self.inicio.get()
+                    lg.emp.buscarporCedula(cedu).turno[4].fin = self.fin.get()
+                elif int(self.nroturno.get())==6:
+                    tur =reg[16]+";"+reg[17]+";"+reg[18]
+                    lg.emp.buscarporCedula(cedu).turno[5].dia = self.dia.get()
+                    lg.emp.buscarporCedula(cedu).turno[5].inicio = self.inicio.get()
+                    lg.emp.buscarporCedula(cedu).turno[5].fin = self.fin.get()
+                elif int(self.nroturno.get())==7:
+                    tur =reg[19]+";"+reg[20]+";"+reg[21]
+                    lg.emp.buscarporCedula(cedu).turno[6].dia = self.dia.get()
+                    lg.emp.buscarporCedula(cedu).turno[6].inicio = self.inicio.get()
+                    lg.emp.buscarporCedula(cedu).turno[6].fin = self.fin.get()
+                
                 tunew=self.dia.get()+";"+self.inicio.get()+";"+self.fin.get()
                 
-                if int(reg[1])==cedu:
+                if int(reg[0])==cedu:
                     aux.append(renglon.replace(tur,tunew,1))
                 else:
                     aux.append(renglon)
                 for c in aux:
                     cadena+=str(c)
-            a= open('empleados.txt', 'w')
+            a= open('file.txt', 'w')
             a.write(cadena)
             a.close()
-            lg.emp.buscarporCedula(cedu).turno.dia = self.dia.get()
-            lg.emp.buscarporCedula(cedu).turno.inicio = self.inicio.get()
-            lg.emp.buscarporCedula(cedu).turno.fin = self.fin.get()
-            self.infor_lbl['text']="Turno asignado exitosamente"
+            
+            self.infor_lbl['text']="Turno asignado \n exitosamente"
 
     def __init__(self):  
         self.ventana = tk.Tk()                             
@@ -107,15 +141,23 @@ class asigTurn():
         self.fin['values']= ("7 am", "8 am", "9 am", "10 am", "11 am", "12 pm", "13 pm", "14 pm", "15 pm", "16 pm", "17 pm", "18 pm", "19 pm", "20 pm ", "21 pm", "22 pm", "23 pm")
         self.fin.place(x=350, y=220)
         self.fin.current(0)
+        
         fin_lbl=tk.Label(frame_inf, text="Hora de finalización", font=('Arial', 15, BOLD ),  bg='#1a6958', fg='#fcfcfc')
         fin_lbl.place(x=350, y=190)
 
+        fin_lbl=tk.Label(frame_inf, text="Nro Turno", font=('Arial', 15, BOLD ),  bg='#1a6958', fg='#fcfcfc')
+        fin_lbl.place(x=350, y=250)
+        self.nroturno =ttk.Combobox(frame_inf, state="readonly")
+        self.nroturno['values']= ("1", "2", "3", "4", "5", "6", "7")
+        self.nroturno.place(x=350, y=280)
+        self.nroturno.current(0)
+
         self.asig= tk.Button(frame_inf, text= "Asignar turno", font=('Arial', 12, BOLD ), bg="#09872f", fg='#fcfcfc', width=15, command=self.asignar)
         self.asig['state']= "disabled"
-        self.asig.place(x=350, y= 260)
+        self.asig.place(x=350, y= 330)
         
         
         volver= tk.Button(frame_inf, text= "VOLVER",font=('Arial', 12, BOLD ), bg="#09872f", fg='#fcfcfc', width=15, command=self.v_menu)
         volver.place(x=630, y= 360)
         self.infor_lbl=tk.Label(frame_inf, text="", font=('Arial', 15, BOLD ),  bg='#1a6958', fg='#fff')
-        self.infor_lbl.place(x=350, y=300)
+        self.infor_lbl.place(x=70, y=330)

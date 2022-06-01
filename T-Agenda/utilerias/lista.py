@@ -1,5 +1,8 @@
 from utilerias.clases import Empleado
-
+import tkinter as tk
+from tkinter import W, ttk
+from tkinter.font import BOLD, ITALIC
+from tkinter.tix import COLUMN
 
 class Node:
   def __init__(self, data:Empleado):
@@ -64,8 +67,12 @@ class CLL:
       else:
         current= current.next
         trabajador= -1
-        
-
     return trabajador
+
+  def mostrarHorario(self, dia, Tx:tk.Text):
+    current = self.head
+    while (current.next != self.head ):
+      current.data.recorTurnos(dia, Tx)
+      current = current.next
 
       

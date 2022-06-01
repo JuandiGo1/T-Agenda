@@ -1,5 +1,5 @@
 Ali;11122333;Cocinero;3157529426;04;Lunes;10 am;12 pm;0
-Emily;10145399;Cocinero;3157529426;zmJe9ZaFh;Lunes;10 am;12 pm;0
+Emilia;10145399;Cocinero;3157529426;zmJe9ZaFh;Lunes;10 am;12 pm;0
 Jaymeh;84362522;Mesero;3186508860;utpsCvDBq;Martes;11 am;14 pm;0
 Juan;62943717;Domiciliario;3198244606;si;Lunes;7 am;12 pm;1
 Andres;47562890;Caja;3177118385;fPPucNXpw;Miercoles;11 am;14 pm;0
@@ -8,3 +8,5 @@ Gab;12123742;Mesero;3153317515;QyTZ6v8r6;Domingo;12 pm;17 pm;0
 Ande;12234;Chef;315672;123;Lunes;11 am;13 pm;0
 Mateo;189789;Caja;31145667;mat;Domingo;6 am;7 am;0
 Posa;222222;Caja;3122222;python;dia;inicio;fin;0
+Hector;1987555;Mesero;315676788;arepasqueso;dia;inicio;fin;0
+Edinson;2001664;Caja;31823989;azucar2;dia;inicio;fin;0

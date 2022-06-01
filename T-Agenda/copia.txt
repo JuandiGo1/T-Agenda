@@ -1,0 +1,12 @@
+11122333;Lunes;6 am;7 am;Domingo;8 am;11 am;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
+10145399;Miercoles;6 am;7 am;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
+84362522;Jueves;6 am;7 am;Viernes;11 am;13 pm;Jueves;7 am;10 am;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
+62943717;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
+47562890;Lunes;9 am;11 am;Martes;9 am;11 am;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
+18468742;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
+12123742;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
+12234;Lunes;9 am;11 am;Viernes;9 am;11 am;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
+189789;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
+222222;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
+1987555;d0;i0;f0;d1;i1;f1;d2;i2;f2;d3;i3;f3;d4;i4;f4;d5;i5;f5;d6;i6;f6;
+2001664;d0;i0;f0;d1;i1;f1;d2;i2;f2;d3;i3;f3;d4;i4;f4;d5;i5;f5;d6;i6;f6;

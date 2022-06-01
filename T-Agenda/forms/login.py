@@ -18,10 +18,26 @@ def leerArchivo():
     
     for line in archivo:
         #reg= archivo.readline()
-        
+        archtur = open("file.txt", "r")
         vect = line.split(";")
-        turnoac = cl.turnos(vect[5], vect[6], vect[7])
-        objeto = cl.Empleado(vect[0], int(vect[1]), vect[2], vect[3], vect[4], turnoac)
+        ax= []
+        for renglon in archtur:
+            reg= renglon.split(";")
+
+            if(int(vect[1])==int(reg[0])):
+                
+                tur1 = cl.turnos(reg[1], reg[2], reg[3])
+                tur2 = cl.turnos(reg[4], reg[5], reg[6])
+                tur3 = cl.turnos(reg[7], reg[8], reg[9])
+                tur4 = cl.turnos(reg[10], reg[11], reg[12])
+                tur5 = cl.turnos(reg[13], reg[14], reg[15])
+                tur6 = cl.turnos(reg[16], reg[17], reg[18])
+                tur7 = cl.turnos(reg[19], reg[20], reg[21])
+                ax= [tur1, tur2, tur3, tur4, tur5, tur6, tur7]
+        archtur.close()
+        
+        objeto = cl.Empleado(vect[0], int(vect[1]), vect[2], vect[3], vect[4], ax)
+        
         if int(vect[8])==1:
             objeto.permiso=1
         print(objeto.permiso)

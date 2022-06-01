@@ -14,132 +14,53 @@ class ventanaHorario:
         
 
     def VerLunes(self):
-        file= open('empleados.txt','r')
+        
         self.Tx.config(state='normal')
         self.Tx.delete("1.0","end")
-        for line in file:
-            vect= line.split(';')
-            if vect[5]=='Lunes':
-                self.Tx.insert(tk.END, "============================= Empleado =============================== \n")
-                self.Tx.insert(tk.END, "Nombre: "+vect[0]+"\n")
-                self.Tx.insert(tk.END, "Cedula: "+str(vect[1])+"\n")
-                self.Tx.insert(tk.END, "Cargo: "+vect[2]+"\n")
-                self.Tx.insert(tk.END, "Turno: \n")
-                self.Tx.insert(tk.END, "-Dia: "+vect[5]+"\n")
-                self.Tx.insert(tk.END, "-Inicio: "+vect[6] +"\n")
-                self.Tx.insert(tk.END, "-Fin: "+vect[7] +"\n")
-        file.close()
+        
+        lg.emp.mostrarHorario("Lunes", self.Tx)
+        
         self.Tx.config(state='disabled')
     
     def VerMartes(self):
         self.Tx.config(state='normal')
         self.Tx.delete("1.0","end")
         
-        file= open('empleados.txt','r')
-        
-        for line in file:
-            vect= line.split(';')
-            if vect[5]=='Martes':
-                    self.Tx.insert(tk.END, "============================= Empleado =============================== \n")
-                    self.Tx.insert(tk.END, "Nombre: "+vect[0]+"\n")
-                    self.Tx.insert(tk.END, "Cedula: "+str(vect[1])+"\n")
-                    self.Tx.insert(tk.END, "Cargo: "+vect[2]+"\n")
-                    self.Tx.insert(tk.END, "Turno: \n")
-                    self.Tx.insert(tk.END, "-Dia: "+vect[5]+"\n")
-                    self.Tx.insert(tk.END, "-Inicio: "+vect[6] +"\n")
-                    self.Tx.insert(tk.END, "-Fin: "+vect[7] +"\n")
-        file.close()
+        lg.emp.mostrarHorario("Martes", self.Tx)
         self.Tx.config(state='disabled')
 
     def VerMierc(self):
         self.Tx.config(state='normal')
         self.Tx.delete("1.0","end")
-        file= open('empleados.txt','r')
-        
-        for line in file:
-            vect= line.split(';')
-            if vect[5]=='Miercoles':
-                self.Tx.insert(tk.END, "============================= Empleado =============================== \n")
-                self.Tx.insert(tk.END, "Nombre: "+vect[0]+"\n")
-                self.Tx.insert(tk.END, "Cedula: "+str(vect[1])+"\n")
-                self.Tx.insert(tk.END, "Cargo: "+vect[2]+"\n")
-                self.Tx.insert(tk.END, "Turno: \n")
-                self.Tx.insert(tk.END, "-Dia: "+vect[5]+"\n")
-                self.Tx.insert(tk.END, "-Inicio: "+vect[6] +"\n")
-                self.Tx.insert(tk.END, "-Fin: "+vect[7] +"\n")
-        file.close()
+        lg.emp.mostrarHorario("Miercoles", self.Tx)
         self.Tx.config(state='disabled')
     
     def VerJueves(self):
         self.Tx.config(state='normal')
         file= open('empleados.txt','r')
         self.Tx.delete("1.0","end")
-        for line in file:
-            vect= line.split(';')
-            if vect[5]=='Jueves':
-                self.Tx.insert(tk.END, "============================= Empleado =============================== \n")
-                self.Tx.insert(tk.END, "Nombre: "+vect[0]+"\n")
-                self.Tx.insert(tk.END, "Cedula: "+str(vect[1])+"\n")
-                self.Tx.insert(tk.END, "Cargo: "+vect[2]+"\n")
-                self.Tx.insert(tk.END, "Turno: \n")
-                self.Tx.insert(tk.END, "-Dia: "+vect[5]+"\n")
-                self.Tx.insert(tk.END, "-Inicio: "+vect[6] +"\n")
-                self.Tx.insert(tk.END, "-Fin: "+vect[7] +"\n")
-        file.close()
+        lg.emp.mostrarHorario("Jueves", self.Tx)
         self.Tx.config(state='disabled')
     
     def VerViernes(self):
         self.Tx.config(state='normal')
         file= open('empleados.txt','r')
         self.Tx.delete("1.0","end")
-        for line in file:
-            vect= line.split(';')
-            if vect[5]=='Viernes':
-                self.Tx.insert(tk.END, "============================= Empleado ===============================\n")
-                self.Tx.insert(tk.END, "Nombre: "+vect[0]+"\n")
-                self.Tx.insert(tk.END, "Cedula: "+str(vect[1])+"\n")
-                self.Tx.insert(tk.END, "Cargo: "+vect[2]+"\n")
-                self.Tx.insert(tk.END, "Turno: \n")
-                self.Tx.insert(tk.END, "-Dia: "+vect[5]+"\n")
-                self.Tx.insert(tk.END, "-Inicio: "+vect[6] +"\n")
-                self.Tx.insert(tk.END, "-Fin: "+vect[7] +"\n")
-        file.close()
+        lg.emp.mostrarHorario("Viernes", self.Tx)
         self.Tx.config(state='disabled')
 
     def VerSaba(self):
         self.Tx.config(state='normal')
         file= open('empleados.txt','r')
         self.Tx.delete("1.0","end")
-        for line in file:
-            vect= line.split(';')
-            if vect[5]=='Sabado':
-                self.Tx.insert(tk.END, "============================= Empleado =============================== \n")
-                self.Tx.insert(tk.END, "Nombre: "+vect[0]+"\n")
-                self.Tx.insert(tk.END, "Cedula: "+str(vect[1])+"\n")
-                self.Tx.insert(tk.END, "Cargo: "+vect[2]+"\n")
-                self.Tx.insert(tk.END, "Turno: \n")
-                self.Tx.insert(tk.END, "-Dia: "+vect[5]+"\n")
-                self.Tx.insert(tk.END, "-Inicio: "+vect[6] +"\n")
-                self.Tx.insert(tk.END, "-Fin: "+vect[7] +"\n")
-        file.close()
+        lg.emp.mostrarHorario("Sabado", self.Tx)
         self.Tx.config(state='disabled')
 
     def VerDomi(self):
         self.Tx.config(state='normal')
         file= open('empleados.txt','r')
         self.Tx.delete("1.0","end")
-        for line in file:
-            vect= line.split(';')
-            if vect[5]=='Domingo':
-                self.Tx.insert(tk.END, "============================= Empleado ===============================\n")
-                self.Tx.insert(tk.END, "Nombre: "+vect[0]+"\n")
-                self.Tx.insert(tk.END, "Cedula: "+str(vect[1])+"\n")
-                self.Tx.insert(tk.END, "Cargo: "+vect[2]+"\n")
-                self.Tx.insert(tk.END, "Turno: \n")
-                self.Tx.insert(tk.END, "-Dia: "+vect[5]+"\n")
-                self.Tx.insert(tk.END, "-Inicio: "+vect[6] +"\n")
-                self.Tx.insert(tk.END, "-Fin: "+vect[7] +"\n")
-        file.close()
+        lg.emp.mostrarHorario("Domingo", self.Tx)
         self.Tx.config(state='disabled')
 
     def __init__(self):        
