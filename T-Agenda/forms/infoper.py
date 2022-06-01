@@ -12,8 +12,30 @@ import forms.login as log
 from PIL import Image, ImageTk
 
 class Personales:
+    def v_menu(self):
+        self.ventana.destroy()
+        if log.emp.buscar(self.user.name, self.user.contra).permiso==0:
+            v.Inicio(0,log.emp.buscar(self.user.name, self.user.contra)) 
+        elif log.emp.buscar(self.user.name, self.user.contra).permiso==1:
+            v.Inicio(1, log.emp.buscar(self.user.name, self.user.name))
 
-     
+    def act(self):
+        cadena=""
+        for renglon in open('empleados.txt'):
+            aux=[]
+            reg = renglon.split(';')
+            if self.ant.get() == self.user.contra:
+                if int(reg[1])==self.user.cedula:
+                    aux.append(renglon.replace(self.ant.get(),self.new.get(),1))
+                else:
+                    aux.append(renglon)
+                for c in aux:
+                    cadena+=str(c)
+                a= open('empleados.txt', 'w')
+                a.write(cadena)
+                a.close()
+        self.info_lbl.config(text=self.user.actualizarContra(self.ant.get(), self.new.get()))
+
     
     def __init__(self, user:Empleado=None):  
         self.user = user 
@@ -62,8 +84,14 @@ class Personales:
         self.new.place(x=400, y=220)
 
         self.cambiar = tk.Button(frame_inf, text= "Cambiar", font=('Arial', 12, BOLD ), 
-        bg="#09872f", fg='#fcfcfc',width=16)
+        bg="#09872f", fg='#fcfcfc',width=16, command=self.act)
         self.cambiar.place(x=400, y=250)
+
+        self.info_lbl=tk.Label(frame_inf, text="", font=('Arial', 13, BOLD, ITALIC),
+          bg='#1a6958', fg='#fcfcfc')
+        self.info_lbl.place(x=400, y=300)
+        volver= tk.Button(frame_inf, text= "VOLVER",font=('Arial', 12, BOLD ), bg="#09872f", fg='#fcfcfc', width=15, command=self.v_menu)
+        volver.place(x=630, y= 360)
 
 
 

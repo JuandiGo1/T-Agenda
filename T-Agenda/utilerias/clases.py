@@ -1,5 +1,4 @@
 
-import forms.asignar as s
 import tkinter as tk
 from tkinter import W, ttk
 from tkinter.font import BOLD, ITALIC
@@ -44,8 +43,12 @@ class Empleado(User):
                 Tx.insert(tk.END, "- Inicio: "+t.inicio +"\n")
                 Tx.insert(tk.END, "- Fin: "+t.fin+"\n")
     
-    def actualizarContra():
-        pass
+    def actualizarContra(self, antC, newC):
+        if antC == self.contra:
+            self.contra=newC
+            return "Contraseña actualizada"
+        else:
+            return "Contraseña incorrecta"
     
 class turnos():
     def __init__(self, dia:str, inicio, fin):
@@ -60,11 +63,6 @@ class Admin(User):
         self.telefono = telefono
         self.contra = contra
 
-    def regEmpleado(name, cedula, cargos, telefono):
-        pass
-    def deleteEmpleado(cedula):
-        pass
-    def AsignarHorario(Empleado):
-        pass
+
 
 

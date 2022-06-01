@@ -56,6 +56,7 @@ class PanelPrincipal:
         
         usu = self.usuario.get()
         password = self.password.get()
+        
         act.append(usu)
         act.append(password)
           

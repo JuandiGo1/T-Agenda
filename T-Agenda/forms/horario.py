@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter.font import BOLD, ITALIC
+from utilerias.clases import Empleado
 import utilerias.util as utl
 import forms.ventana as v
 import forms.login as lg
@@ -66,7 +67,6 @@ class ventanaHorario:
     def __init__(self):        
         self.ventana = tk.Tk()                             
         self.ventana.title('Horario')
-          
         w, h = self.ventana.winfo_screenwidth(), self.ventana.winfo_screenheight() 
         self.ventana.geometry("%dx%d+0+0" % (w, h))
         #utl.centrar_ventana(self.ventana, 850, 500)                                   

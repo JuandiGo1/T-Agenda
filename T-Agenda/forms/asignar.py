@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import W, ttk
 from tkinter.font import BOLD, ITALIC
 from tkinter.tix import COLUMN
+import utilerias.clases as cl
 import utilerias.util as utl
 import forms.ventana as v
 import forms.login as lg
@@ -96,6 +97,7 @@ class asigTurn():
             self.infor_lbl['text']="Turno asignado \n exitosamente"
 
     def __init__(self):  
+
         self.ventana = tk.Tk()                             
         self.ventana.title('Asignar')
         self.ventana.geometry('800x500')

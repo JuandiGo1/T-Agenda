@@ -6,6 +6,8 @@
 12234;Lunes;9 am;11 am;Viernes;9 am;11 am;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
 222222;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin;dia;inicio;fin
 1987555;Lunes;8 am;13 pm;d1;i1;f1;Lunes;8 am;10 am;d3;i3;f3;Miercoles;8 am;13 pm;d5;i5;f5;d6;i6;f6;
-2001664;d0;i0;f0;d1;i1;f1;d2;i2;f2;d3;i3;f3;d4;i4;f4;d5;i5;f5;d6;i6;f6;
+2001664;Domingo;6 am;7 am;d1;i1;f1;d2;i2;f2;d3;i3;f3;d4;i4;f4;d5;i5;f5;Sabado;11 am;12 pm;
 18468742;Sabado;6 am;7 am;Viernes;6 am;7 am;Sabado;8 am;10 am;d3;i3;f3;d4;i4;f4;d5;i5;f5;d6;i6;f6;
-115186222;d0;i0;f0;d1;i1;f1;d2;i2;f2;d3;i3;f3;d4;i4;f4;d5;i5;f5;d6;i6;f6;
+909090;d0;i0;f0;d1;i1;f1;d2;i2;f2;d3;i3;f3;d4;i4;f4;d5;i5;f5;d6;i6;f6;
+819212;d0;i0;f0;d1;i1;f1;d2;i2;f2;d3;i3;f3;d4;i4;f4;d5;i5;f5;d6;i6;f6;
+19999;d0;i0;f0;d1;i1;f1;d2;i2;f2;d3;i3;f3;d4;i4;f4;d5;i5;f5;d6;i6;f6;

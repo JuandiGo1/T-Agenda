@@ -173,11 +173,12 @@ class editEm(tk.Frame):
         self.frame_sup.destroy()
 
         
-        opciones(self.root, 0, self.op2, self.op3)
+        opciones(self.root, self.op1, self.op2, self.op3)
 
 
 
     def __init__(self,root:Tk) :
+        
         self.root=root
         self.op1 =utl.leer_img("./imagenes/add.png", (45, 45))
         self.op2 =utl.leer_img("./imagenes/edit.png", (45, 45))
@@ -238,10 +239,10 @@ class editEm(tk.Frame):
         self.elim.place(x=350, y= 300)
         
         
-        volver= tk.Button(self.frame_inf, text= "VOLVER",font=('Arial', 12, BOLD ),
+        volver= tk.Button(root, text= "VOLVER",font=('Arial', 12, BOLD ),
          bg="#09872f", fg='#fcfcfc', width=15, command=self.v_menu)
 
-        volver.place(x=630, y= 360)
+        volver.place(x=630, y= 460)
         self.infor_lbl=tk.Label(self.frame_inf, text="", font=('Arial', 15, BOLD ),  
         bg='#1a6958', fg='#fff')
         self.infor_lbl.place(x=350, y=350)
@@ -288,7 +289,8 @@ class regEm(tk.Frame):
 
 
 
-    def __init__(self,root:Tk) :
+    def __init__(self,root:Tk, user:Empleado=None) :
+        self.user=user
         self.root=root
         self.op1 =utl.leer_img("./imagenes/add.png", (45, 45))
         self.op2 =utl.leer_img("./imagenes/edit.png", (45, 45))
@@ -348,7 +350,7 @@ class regEm(tk.Frame):
 
         volver= tk.Button(root, text= "VOLVER",font=('Arial', 12, BOLD ), 
         bg="#09872f", fg='#fcfcfc', width=15, command=self.v_menu)
-        volver.place(x=630, y= 360)
+        volver.place(x=630, y= 460)
         
 
         self.Tx = tk.Text(self.frame_inf, height = 10, width = 20, state='disabled')
@@ -379,7 +381,6 @@ class opciones(tk.Frame):
 
     def __init__(self, root:Tk, op1:ImageTk.PhotoImage, op2:ImageTk.PhotoImage, op3: ImageTk.PhotoImage):
         self.root=root
- 
         self.frame_sup = tk.Frame(root, bd=0, width=800, height=100,  bg='#baf7f1')
         self.frame_sup.place(relheight=1, relwidth=1)
         if op1 !=0:
@@ -421,6 +422,7 @@ class Empleados:
      
     
     def __init__(self):  
+        
         self.ventana = tk.Tk()                             
         self.ventana.title('EMPLEADOS')
         self.ventana.geometry('800x500')
